@@ -1,4 +1,4 @@
 interface:
-  display_name: "Oil UX"
-  short_description: "克制流程、真实状态、清晰作用域、内容驱动布局与组件治理"
-  default_prompt: "使用 $oil-ux 审查这个界面的流程、数据作用域、信息层级、空间布局和共享组件，并修复可验证的问题。"
+  display_name: "Oil Frontend"
+  short_description: "统一用户任务、数据状态、界面结构与前端代码归属"
+  default_prompt: "使用 $oil-frontend 审查这个产品前端的任务流程、数据来源、状态、界面结构和代码组织，并修复真正出错的位置。"
