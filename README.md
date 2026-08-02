@@ -60,7 +60,7 @@ git clone https://github.com/oil-oil/oil-frontend.git ~/.claude/skills/oil-front
 
 ## 使用
 
-这个 Skill 不会因为普通前端任务自动触发。使用时需要明确点名：
+涉及产品前端的实现、修改、重构或评审时，Agent 可以自动启用。也可以明确点名：
 
 ```text
 使用 $oil-frontend 审查这个产品前端的任务流程、数据来源、状态、界面结构和代码组织，并修复问题。
@@ -107,7 +107,7 @@ git clone https://github.com/oil-oil/oil-frontend.git ~/.claude/skills/oil-front
 
 ## 使用边界
 
-- 只有用户明确要求使用 `oil-frontend` 时才启用。
+- 处理产品前端改动时可以自动启用；只解释前端概念，或者处理纯构建、部署、依赖升级、安全和后端任务时不启用。
 - 关注直接影响产品界面的前端设计与实现，不包含构建、部署、安全和性能等通用工程规范。
 - 不规定具体框架、状态库、CSS 方案或固定目录模板。
 - 不要求 Agent 自行打开浏览器验证页面。

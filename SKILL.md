@@ -1,6 +1,6 @@
 ---
 name: oil-frontend
-description: 仅当用户明确要求使用 oil-frontend 时触发，例如写出 $oil-frontend、说“用 oil-frontend”或“使用 oil-frontend”，或通过技能选择器选择本技能。仅提到 oil-frontend 名称，或请求涉及前端、UX/UI、页面、组件、CSS、Hook、类型、表单、交互、布局、状态或重构，均不得自动触发。触发后，按本规范审查、设计或重构产品前端，统一用户任务、信息交互、数据状态、代码组织和共享实现。
+description: 用于实现、修改、重构或评审产品前端。当前任务涉及页面、组件、交互、表单、状态、数据流、Hook、类型、CSS、前端代码组织或共享实现时自动触发。触发后先阅读 SKILL.md 判断相关范围，只读取与当前任务直接相关的参考文件；如果改动与产品前端无关则停止使用。纯构建、部署、依赖升级、安全、后端任务，以及只解释前端概念而不处理项目实现的请求，不触发。
 ---
 
 # Oil Frontend
@@ -19,13 +19,14 @@ description: 仅当用户明确要求使用 oil-frontend 时触发，例如写�
 
 ## 参考文件读取顺序
 
-1. 先阅读本文件，明确任务、对象和改动范围。
-2. 开始执行前，按下表读取当前任务的必读文件；只有任务确实涉及对应问题时才补充其他文件，不默认读取全部参考文件。
-3. 一个任务命中多行时合并读取，不重复加载同一文件。
+1. 触发后先只阅读本文件，明确任务、对象和改动范围，不预先读取参考文件。
+2. 如果任务不涉及用户可见界面、前端状态与数据流、组件实现或前端代码组织，停止使用本 Skill。
+3. 确认相关后，按下表读取当前任务的必读文件；只有任务确实涉及对应问题时才补充其他文件。
+4. 一个任务命中多行时合并读取，不重复加载同一文件。
 
 | 当前任务 | 必读 | 需要时补充 |
 | --- | --- | --- |
-| 任何前端代码实现或重构 | [组件与代码组织](references/component-contract.md) | 需要新增检查时读 [自动化](references/automation-contract.md) |
+| 模块边界、组件、Hook、函数、类型、CSS 或共享实现 | [组件与代码组织](references/component-contract.md) | 需要新增检查时读 [自动化](references/automation-contract.md) |
 | 文案、动作、图标、点击区域或视觉强调 | [信息与动作](references/information-and-action-contract.md) | 涉及对象身份、图片或选择器时读 [资源识别](references/resource-recognition-contract.md) |
 | 列表、卡片、详情、表格或批量操作 | [集合与详情](references/collection-and-detail-contract.md) | 涉及资源身份时读 [资源识别](references/resource-recognition-contract.md)；涉及编辑时读 [交互与编辑](references/interaction-and-editing-contract.md) |
 | 表单、选择、编辑或多步工作流 | [交互与编辑](references/interaction-and-editing-contract.md) | 涉及保存范围和流程连续性时读 [作用域与状态](references/scope-and-state-integrity-contract.md) |
