@@ -21,18 +21,23 @@ description: 用于实现、修改、重构或评审产品前端。当前任务�
 
 1. 触发后先只阅读本文件，明确任务、对象和改动范围，不预先读取参考文件。
 2. 如果任务不涉及用户可见界面、前端状态与数据流、组件实现或前端代码组织，停止使用本 Skill。
-3. 确认相关后，按下表读取当前任务的必读文件；只有任务确实涉及对应问题时才补充其他文件。
-4. 一个任务命中多行时合并读取，不重复加载同一文件。
+3. 简单局部改动默认只读取一个主要规则；只有任务还需要另一个独立判断时，才读取第二个规则。
+4. 不因关键词出现、文件内链接或“保险起见”继续读取规则。一个任务看似命中多行时，先选择真正负责当前决定的那一行。
 
-| 当前任务 | 必读 | 需要时补充 |
+| 当前任务 | 主要规则 | 仅在这些情况补充 |
 | --- | --- | --- |
 | 模块边界、组件、Hook、函数、类型、CSS 或共享实现 | [组件与代码组织](references/component-contract.md) | 需要新增检查时读 [自动化](references/automation-contract.md) |
-| 文案、动作、图标、点击区域或视觉强调 | [信息与动作](references/information-and-action-contract.md) | 涉及对象身份、图片或选择器时读 [资源识别](references/resource-recognition-contract.md) |
+| 新增或改变文案、动作含义、图标、点击反馈或视觉强调 | [信息与动作](references/information-and-action-contract.md) | 涉及对象身份、图片或选择器时读 [资源识别](references/resource-recognition-contract.md) |
 | 列表、卡片、详情、表格或批量操作 | [集合与详情](references/collection-and-detail-contract.md) | 涉及资源身份时读 [资源识别](references/resource-recognition-contract.md)；涉及编辑时读 [交互与编辑](references/interaction-and-editing-contract.md) |
 | 表单、选择、编辑或多步工作流 | [交互与编辑](references/interaction-and-editing-contract.md) | 涉及保存范围和流程连续性时读 [数据与操作范围](references/scope-and-state-integrity-contract.md) |
 | 查询、请求、保存、数据范围或异步状态 | [数据与操作范围](references/scope-and-state-integrity-contract.md)、[状态与加载](references/state-and-loading-contract.md) | 涉及共享数据源或 Hook 时读 [组件与代码组织](references/component-contract.md) |
-| 页面尺寸、分栏、滚动、弹窗或响应式 | [视口与弹窗](references/viewport-and-dialog-contract.md) | 涉及下拉、菜单、提示等依附触发器的浮层时读 [弹层](references/overlay-contract.md) |
-| 前端代码改动完成前 | [验证](references/verification-contract.md) | 无 |
+| 改变页面尺寸、分栏、滚动、弹窗结构或响应式行为 | [视口与弹窗](references/viewport-and-dialog-contract.md) | 涉及下拉、菜单、提示等依附触发器的浮层时读 [弹层](references/overlay-contract.md) |
+
+以下情况不触发额外读取：
+
+- 只移动现有控件，且不改变文案、动作含义或反馈时，不读取信息与动作规则。
+- 只调整普通父子容器归属，且不改变尺寸、滚动、弹窗或响应式行为时，不读取视口与弹窗规则。
+- 参考文件中的链接只说明相关规则的位置，不表示必须继续读取。
 
 ## 术语速查
 
@@ -116,7 +121,10 @@ description: 用于实现、修改、重构或评审产品前端。当前任务�
 
 ### 6. 验证
 
-- 按 [verification-contract.md](references/verification-contract.md) 检查本次改动能够触及的状态、视口、数据范围和共享实现的使用位置。
+- 运行项目现有且与改动相关的类型检查、Lint、测试或构建。
+- 简单局部改动只检查修改位置、直接行为和最近的使用位置，不展开完整状态矩阵。
+- 改动涉及共享组件、数据范围、异步状态、表单流程、滚动、响应式或多个页面时，再检查受影响的状态、数据范围、代表性视口和全部使用位置。
+- 只报告已验证项、未验证项和阻断原因。
 
 ## 独立自检
 
