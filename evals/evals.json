@@ -3,7 +3,8 @@
   "evals": [
     {
       "id": 1,
-      "prompt": "只读评审 apps/web/components/dashboard-workspace.tsx 及其直接使用的样式。用户反馈页面看起来层级扁平、信息拥挤，希望得到可以直接交给实现 Agent 的视觉修改方案。保留现有业务状态、数据流和项目 Token，不修改源码；报告读取了哪些 oil-frontend 参考文件。",
+      "name": "visual-hierarchy-review",
+      "prompt": "使用 $oil-frontend 只读评审 apps/web/components/dashboard-workspace.tsx 及其直接使用的样式。用户反馈页面看起来层级扁平、信息拥挤，希望得到可以直接交给实现 Agent 的视觉修改方案。保留现有业务状态、数据流和项目 Token，不修改源码；报告读取了哪些 oil-frontend 参考文件。",
       "expected_output": "以视觉工程为主要规则，给出具体元素、属性、项目依据和代码落点，不发明新的设计系统，不展开无障碍专项审计。",
       "files": [],
       "expectations": [
@@ -15,7 +16,8 @@
     },
     {
       "id": 2,
-      "prompt": "只读评审 packages/ui/src/components/action-swap.tsx 和 packages/ui/src/lib/motion.ts。图标切换在用户快速连续点击时显得拖沓，偶尔停在中间状态。请给出可直接实现的修复方案，不修改源码；报告读取了哪些 oil-frontend 参考文件。",
+      "name": "interruptible-motion-review",
+      "prompt": "使用 $oil-frontend 只读评审 packages/ui/src/components/action-swap.tsx 和 packages/ui/src/lib/motion.ts。图标切换在用户快速连续点击时显得拖沓，偶尔停在中间状态。请给出可直接实现的修复方案，不修改源码；报告读取了哪些 oil-frontend 参考文件。",
       "expected_output": "以动效与性能为主要规则，处理可中断性、属性选择、快速重复触发和清理；只有证据支持时才要求性能录制。",
       "files": [],
       "expectations": [
@@ -28,7 +30,8 @@
     },
     {
       "id": 3,
-      "prompt": "只读检查 packages/ui/src/components/card.tsx：假设当前任务只是修复 className 属性的 TypeScript 类型不匹配，明确要求渲染结果完全不变。请说明最小修改落点，不修改源码；报告读取了哪些 oil-frontend 参考文件。",
+      "name": "nonvisual-classname-type-fix",
+      "prompt": "使用 $oil-frontend 只读检查 packages/ui/src/components/card.tsx：假设当前任务只是修复 className 属性的 TypeScript 类型不匹配，明确要求渲染结果完全不变。请说明最小修改落点，不修改源码；报告读取了哪些 oil-frontend 参考文件。",
       "expected_output": "只读取组件与代码组织规则，不因 className、组件或 CSS 相关词加载视觉工程或动效规则。",
       "files": [],
       "expectations": [
@@ -40,7 +43,8 @@
     },
     {
       "id": 4,
-      "prompt": "styles/dashboard.css 的 import 路径拼错导致构建失败。只修正导入路径，不改变任何界面结果。请判断 oil-frontend 是否需要继续使用以及应读取哪些参考文件。",
+      "name": "css-import-stops-after-entry",
+      "prompt": "使用 $oil-frontend 判断这个请求：styles/dashboard.css 的 import 路径拼错导致构建失败，只修正导入路径，不改变任何界面结果。请判断本 Skill 是否需要继续使用以及应读取哪些参考文件。",
       "expected_output": "判断为不需要继续使用 oil-frontend，不读取视觉、动效或组件参考文件。",
       "files": [],
       "expectations": [
@@ -51,7 +55,8 @@
     },
     {
       "id": 5,
-      "prompt": "列表首次加载时同时出现 skeleton 和 EmptyState，但数据集合与查询范围本身没有问题。请判断主要 oil-frontend 规则和是否需要补充规则，不修改源码。",
+      "name": "loading-only-route",
+      "prompt": "使用 $oil-frontend 判断这个问题：列表首次加载时同时出现 skeleton 和 EmptyState，但数据集合与查询范围本身没有问题。请判断主要规则和是否需要补充规则，不修改源码。",
       "expected_output": "只把状态与加载作为主要规则，不额外读取数据与操作范围规则。",
       "files": [],
       "expectations": [
@@ -62,7 +67,8 @@
     },
     {
       "id": 6,
-      "prompt": "分别为三个独立请求选择 oil-frontend 的唯一主要规则，不实施修改：A. 把按钮边框和颜色改得与现有设计 Token 一致；B. 把三个页面重复的 CSS 拆到正确的共享组件并清理旧样式；C. 修复快速切换时 transition 排队和卡顿。说明每项是否需要补充规则。",
+      "name": "route-by-user-result",
+      "prompt": "使用 $oil-frontend 分别为三个独立请求选择唯一主要规则，不实施修改：A. 把按钮边框和颜色改得与现有设计 Token 一致；B. 把三个页面重复的 CSS 拆到正确的共享组件并清理旧样式；C. 修复快速切换时 transition 排队和卡顿。说明每项是否需要补充规则。",
       "expected_output": "A 路由到视觉工程，B 路由到组件与代码组织，C 路由到动效与性能；不能因为三项都有 CSS 就选择同一规则。",
       "files": [],
       "expectations": [

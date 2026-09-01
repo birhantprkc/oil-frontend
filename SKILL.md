@@ -1,6 +1,6 @@
 ---
 name: oil-frontend
-description: 用于实现、修改、重构或评审产品前端。当前任务涉及页面、组件、交互、表单、状态、数据流、Hook、类型、视觉层级、排版、颜色、圆角、阴影、图标、响应式、动效、改变可见结果的 CSS 或前端代码组织时自动触发。触发后先阅读 SKILL.md，按任务的主要决策只加载最小规则集。纯 CSS 语法、导入或类名修复且不改变界面结果时不触发；纯构建、部署、依赖升级、安全、后端任务，以及只解释前端概念而不处理项目实现的请求也不触发。
+description: 仅在用户明确要求使用 oil-frontend 时触发，或在用户主动通过 Skill 选择器选择时触发。典型表达包括 $oil-frontend 和“用 oil-frontend”。普通前端、UI/UX、组件、CSS、交互、视觉、动效或重构请求不得自动触发；只讨论、引用或评价本 Skill 也不触发。触发后用于实现、修改、重构或评审产品前端，并按主要决策加载最小规则集。
 ---
 
 # Oil Frontend
@@ -33,6 +33,11 @@ description: 用于实现、修改、重构或评审产品前端。当前任务�
 | 动画、过渡、微交互、展开收起、拖拽反馈、滚动动效或卡顿 | [动效与性能](references/motion-performance-contract.md) | 动效承担动作反馈或视觉层级时读 [视觉工程](references/visual-engineering-contract.md)；根因是异步状态时改读 [状态与加载](references/state-and-loading-contract.md) 为主要规则 |
 | 模块边界、组件、Hook、函数、类型、样式归属、共享样式、CSS 组织或共享实现 | [组件与代码组织](references/component-contract.md) | 需要新增检查时读 [自动化](references/automation-contract.md) |
 | 新增或改变文案、动作含义、图标、点击反馈或视觉强调 | [信息与动作](references/information-and-action-contract.md) | 涉及对象身份、图片或选择器时读 [资源识别](references/resource-recognition-contract.md) |
+
+数据、状态和布局继续按结果选择：
+
+| 当前任务 | 主要规则 | 仅在这些情况补充 |
+| --- | --- | --- |
 | 列表、卡片、详情、表格或批量操作 | [集合与详情](references/collection-and-detail-contract.md) | 涉及资源身份时读 [资源识别](references/resource-recognition-contract.md)；涉及编辑时读 [交互与编辑](references/interaction-and-editing-contract.md) |
 | 表单、选择、编辑或多步工作流 | [交互与编辑](references/interaction-and-editing-contract.md) | 涉及保存范围和流程连续性时读 [数据与操作范围](references/scope-and-state-integrity-contract.md) |
 | 查询结果、分页、候选集合、保存范围、批量范围或请求结果归属 | [数据与操作范围](references/scope-and-state-integrity-contract.md) | 同时改变 loading、refreshing、empty、error 或 processing 呈现时读 [状态与加载](references/state-and-loading-contract.md) |

@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/readme/hero.png" width="100%" alt="oil-frontend：从用户任务出发，修改产品前端真正出错的位置">
+  <img src="./assets/readme/hero.png" width="100%" alt="oil-frontend：从用户任务出发，修改产品前端真正出错的位置；明确点名后启用">
 </p>
 
 <p align="center">
@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <code>任务与对象</code> · <code>状态与范围</code> · <code>视觉与动效</code> · <code>界面与空间</code> · <code>组件与代码</code>
+  <code>任务与对象</code> · <code>状态与范围</code> · <code>代码与清理</code>
 </p>
 
 ## 为什么需要这个 Skill
@@ -56,19 +56,35 @@ Agent 会先检查数据流、父布局、共享组件和全部使用位置，�
 
 ## 它怎么读取规则
 
-产品前端相关的实现、修改、重构和评审会自动触发这个 Skill。触发后先只读取 [SKILL.md](SKILL.md) 判断用户真正要改变的结果，简单任务只加载一个主要规则，确有第二个独立问题时才补充一个；不因代码中出现 CSS 或动画库就加载视觉与动效规则。
+用户明确点名 `oil-frontend` 后，Agent 先只读取 [SKILL.md](SKILL.md) 判断用户真正要改变的结果。简单任务只加载一个主要规则，确有第二个独立问题时才补充一个；不因代码中出现 CSS 或动画库就加载视觉与动效规则。
 
 ## 安装
 
-[oil-oil/oil-frontend](https://github.com/oil-oil/oil-frontend) 安装这个 skill
+把下面这句话交给支持安装 Skill 的 Agent：
+
+```text
+请帮我安装这个 Skill：https://github.com/oil-oil/oil-frontend
+```
+
+也可以使用命令安装：
+
+```bash
+npx skills add oil-oil/oil-frontend
+```
+
+## 配置
+
+无需额外配置、账号或密钥。Skill 只读取当前任务需要的项目文件和自身参考规则，不会自行把数据发送到外部服务。
 
 ## 使用
 
-安装后可以直接提出前端修改任务，也可以明确写出：
+这个 Skill 采用显式启用策略，不会因为普通前端改动自动触发。使用时请明确点名：
 
 ```text
 使用 $oil-frontend 检查并修改这个前端模块。
 ```
+
+只提到、讨论或评价 `oil-frontend`，但没有要求使用时，也不会触发。
 
 ## 不包含的内容
 
