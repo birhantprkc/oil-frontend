@@ -54,7 +54,7 @@
     {
       "id": "ordinary-01",
       "query": "帮我把这个 React 页面做得更好看。",
-      "should_trigger": true
+      "should_trigger": false
     },
     {
       "id": "ordinary-02",
@@ -139,6 +139,11 @@
     {
       "id": "declined",
       "query": "这次不要用 oil-frontend，调整这个按钮的颜色。",
+      "should_trigger": false
+    },
+    {
+      "id": "design-direction",
+      "query": "给这个产品的首页探索三种不同的视觉风格，我来挑。",
       "should_trigger": false
     }
   ]

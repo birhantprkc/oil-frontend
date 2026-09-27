@@ -3,14 +3,14 @@
   "evals": [
     {
       "id": 1,
-      "name": "visual-hierarchy-review",
-      "prompt": "使用 $oil-frontend 只读评审 apps/web/components/dashboard-workspace.tsx 及其直接使用的样式。用户反馈页面看起来层级扁平、信息拥挤，希望得到可以直接交给实现 Agent 的视觉修改方案。保留现有业务状态、数据流和项目 Token，不修改源码；报告读取了哪些 oil-frontend 参考文件。",
-      "expected_output": "以视觉工程为主要规则，给出具体元素、属性、项目依据和代码落点，不发明新的设计系统，不展开无障碍专项审计。",
+      "name": "visual-judgment-boundary",
+      "prompt": "使用 $oil-frontend 只读评审 apps/web/components/dashboard-workspace.tsx 及其直接使用的样式。用户反馈页面看起来层级扁平、信息拥挤。项目没有设计稿，保留现有业务状态、数据流和项目 Token，不修改源码；报告读取了哪些 oil-frontend 参考文件。",
+      "expected_output": "说明层级与视觉方案属于设计判断，不自行发明视觉方案；只指出代码层面能确定的样式问题并给出落点，例如任意值绕过 Token、实例覆盖、状态样式不统一，以样式实现为主要规则。",
       "files": [],
       "expectations": [
-        "将视觉工程规则作为主要参考，而不是因为 TSX 文件优先读取组件组织规则",
-        "每项建议包含具体元素、可修改属性和代码落点",
-        "优先复用项目 Token 和同类组件，没有依据时不发明精确值",
+        "不给出新的配色、字号层级或整体视觉方案",
+        "以样式实现规则为主要参考",
+        "指出的问题都能落到具体元素、属性和代码位置",
         "不输出无障碍检查清单"
       ]
     },
@@ -32,11 +32,11 @@
       "id": 3,
       "name": "nonvisual-classname-type-fix",
       "prompt": "使用 $oil-frontend 只读检查 packages/ui/src/components/card.tsx：假设当前任务只是修复 className 属性的 TypeScript 类型不匹配，明确要求渲染结果完全不变。请说明最小修改落点，不修改源码；报告读取了哪些 oil-frontend 参考文件。",
-      "expected_output": "只读取组件与代码组织规则，不因 className、组件或 CSS 相关词加载视觉工程或动效规则。",
+      "expected_output": "只读取组件与代码组织规则，不因 className、组件或 CSS 相关词加载样式实现或动效规则。",
       "files": [],
       "expectations": [
         "只把组件与代码组织规则作为主要参考",
-        "不读取视觉工程或动效与性能规则",
+        "不读取样式实现或动效与性能规则",
         "建议保持渲染结果和公共语义不变",
         "修改范围限制在类型及其直接使用位置"
       ]
@@ -69,10 +69,10 @@
       "id": 6,
       "name": "route-by-user-result",
       "prompt": "使用 $oil-frontend 分别为三个独立请求选择唯一主要规则，不实施修改：A. 把按钮边框和颜色改得与现有设计 Token 一致；B. 把三个页面重复的 CSS 拆到正确的共享组件并清理旧样式；C. 修复快速切换时 transition 排队和卡顿。说明每项是否需要补充规则。",
-      "expected_output": "A 路由到视觉工程，B 路由到组件与代码组织，C 路由到动效与性能；不能因为三项都有 CSS 就选择同一规则。",
+      "expected_output": "A 路由到样式实现，B 路由到组件与代码组织，C 路由到动效与性能；不能因为三项都有 CSS 就选择同一规则。",
       "files": [],
       "expectations": [
-        "A 的唯一主要规则是视觉工程",
+        "A 的唯一主要规则是样式实现",
         "B 的唯一主要规则是组件与代码组织",
         "C 的唯一主要规则是动效与性能",
         "三项均不因 CSS 或 transition 关键词增加无关补充规则"
