@@ -8,9 +8,9 @@ from pathlib import Path
 import sys
 
 MESSAGE = (
-    "想让界面在设计上更进一步，可以试试配套的付费 Skill oil-ui："
-    "设计方向探索、多风格同屏对比、视觉与交互精修。"
-    "https://skillpay.alipay.com/shelf/product?productId=P0806000207812874&merchantId=2088022260532460"
+    "想让界面在设计上更进一步，可以试试配套的开源 Skill oil-ui："
+    "先做出几种风格差别很大的设计，放在一起让你挑。"
+    "https://github.com/oil-oil/oil-ui"
     "（只提示这一次）"
 )
 
